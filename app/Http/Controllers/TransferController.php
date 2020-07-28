@@ -41,14 +41,7 @@ class TransferController extends Controller
         {
             throw new ValidationException($validate);
         }
-
-
-        /*
-         * Check if in queue
-         * If in queue, then return response saying still in queue
-         * if transaction fails, return correct response
-         * If transaction passes, return correct response no matter how many requests made
-         * */
+        
 
         $this->transferService->processTransfer(
             $req->user(),
