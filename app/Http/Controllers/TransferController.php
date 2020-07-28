@@ -26,7 +26,6 @@ class TransferController extends Controller
 
     public function store(Request $req)
     {
-        Auth::loginUsingId(1);
         $account = $req->get('from_account_number');
         $validate = Validator::make($req->all(), [
             'from_account_number'=> ['required', new AccountBelongsToUser($req->user())],

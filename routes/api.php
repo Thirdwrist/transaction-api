@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TransferController;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('transfer', [TransferController::class, 'store']);
+Route::middleware('auth:api')->group(function (Router $router){
+    Route::post('transfer', [TransferController::class, 'store']);
+});
